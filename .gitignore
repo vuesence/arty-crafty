@@ -1,0 +1,7 @@
+# Logs
+logs
+*.log
+.history
+node_modules
+dist
+*.local

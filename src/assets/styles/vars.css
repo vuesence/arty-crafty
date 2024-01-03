@@ -1,0 +1,473 @@
+/**
+ * Typography
+ * -------------------------------------------------------------------------- */
+
+ @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+ :root {
+  --vwa-font-family-base: 'Roboto', sans-serif;
+  --vwa-font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+
+/**
+ * Colors: Solid
+ * -------------------------------------------------------------------------- */
+
+ :root {
+  --vwa-c-white: #ffffff;
+  --vwa-c-black: #000000;
+
+  --vwa-c-neutral: var(--vwa-c-black);
+  --vwa-c-neutral-inverse: var(--vwa-c-white);
+}
+
+.dark {
+  --vwa-c-neutral: var(--vwa-c-white);
+  --vwa-c-neutral-inverse: var(--vwa-c-black);
+}
+
+/**
+ * Colors: Palette
+ *
+ * The primitive colors used for accent colors. These colors are referenced
+ * by functional colors such as "Text", "Background", or "Brand".
+ *
+ * Each colors have exact same color scale system with 3 levels of solid
+ * colors with different brightness, and 1 soft color.
+ *
+ * - `XXX-1`: The most solid color used mainly for colored text. It must
+ *   satisfy the contrast ratio against when used on top of `XXX-soft`.
+ *
+ * - `XXX-2`: The color used mainly for hover state of the button.
+ *
+ * - `XXX-3`: The color for solid background, such as bg color of the button.
+ *    It must satisfy the contrast ratio with pure white (#ffffff) text on
+ *    top of it.
+ *
+ * - `XXX-soft`: The color used for subtle background such as custom container
+ *    or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
+ *    on top of it.
+ *
+ *    The soft color must be semi transparent alpha channel. This is crucial
+ *    because it allows adding multiple "soft" colors on top of each other
+ *    to create a accent, such as when having inline code block inside
+ *    custom containers.
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-c-gray-1: #dddde3;
+  --vwa-c-gray-2: #e4e4e9;
+  --vwa-c-gray-3: #ebebef;
+  --vwa-c-gray-soft: rgba(142, 150, 170, 0.14);
+
+  --vwa-c-indigo-1: #3451b2;
+  --vwa-c-indigo-2: #3a5ccc;
+  --vwa-c-indigo-3: #5672cd;
+  --vwa-c-indigo-soft: rgba(100, 108, 255, 0.14);
+
+  --vwa-c-green-1: #18794e;
+  --vwa-c-green-2: #299764;
+  --vwa-c-green-3: #30a46c;
+  --vwa-c-green-soft: rgba(16, 185, 129, 0.14);
+
+  --vwa-c-yellow-1: #915930;
+  --vwa-c-yellow-2: #946300;
+  --vwa-c-yellow-3: #9f6a00;
+  --vwa-c-yellow-soft: rgba(234, 179, 8, 0.14);
+
+  --vwa-c-red-1: #b8272c;
+  --vwa-c-red-2: #d5393e;
+  --vwa-c-red-3: #e0575b;
+  --vwa-c-red-soft: rgba(244, 63, 94, 0.14);
+
+  --vwa-c-sponsor: #db2777;
+}
+
+.dark {
+  --vwa-c-gray-1: #515c67;
+  --vwa-c-gray-2: #414853;
+  --vwa-c-gray-3: #32363f;
+  --vwa-c-gray-soft: rgba(101, 117, 133, 0.16);
+
+  --vwa-c-indigo-1: #a8b1ff;
+  --vwa-c-indigo-2: #5c73e7;
+  --vwa-c-indigo-3: #3e63dd;
+  --vwa-c-indigo-soft: rgba(100, 108, 255, 0.16);
+
+  --vwa-c-green-1: #3dd68c;
+  --vwa-c-green-2: #30a46c;
+  --vwa-c-green-3: #298459;
+  --vwa-c-green-soft: rgba(16, 185, 129, 0.16);
+
+  --vwa-c-yellow-1: #f9b44e;
+  --vwa-c-yellow-2: #da8b17;
+  --vwa-c-yellow-3: #a46a0a;
+  --vwa-c-yellow-soft: rgba(234, 179, 8, 0.16);
+
+  --vwa-c-red-1: #f66f81;
+  --vwa-c-red-2: #f14158;
+  --vwa-c-red-3: #b62a3c;
+  --vwa-c-red-soft: rgba(244, 63, 94, 0.16);
+}
+
+/**
+ * Colors: Background
+ *
+ * - `bg`: The bg color used for main screen.
+ *
+ * - `bg-alt`: The alternative bg color used in places such as "sidebar",
+ *   or "code block".
+ *
+ * - `bg-elv`: The elevated bg color. This is used at parts where it "floats",
+ *   such as "dialog".
+ *
+ * - `bg-soft`: The bg color to slightly distinguish some components from
+ *   the page. Used for things like "carbon ads" or "table".
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-c-bg: #ffffff;
+  --vwa-c-bg-alt: #f6f6f7;
+  --vwa-c-bg-elv: #ffffff;
+  --vwa-c-bg-soft: #f6f6f7;
+}
+
+.dark {
+  --vwa-c-bg: #1b1b1f;
+  --vwa-c-bg-alt: #161618;
+  --vwa-c-bg-elv: #202127;
+  --vwa-c-bg-soft: #202127;
+}
+
+/**
+ * Colors: Borders
+ *
+ * - `divider`: This is used for separators. This is used to divide sections
+ *   within the same components, such as having separator on "h2" heading.
+ *
+ * - `border`: This is designed for borders on interactive components.
+ *   For example this should be used for a button outline.
+ *
+ * - `gutter`: This is used to divide components in the page. For example
+ *   the header and the lest of the page.
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-c-border: #c2c2c4;
+  --vwa-c-divider: #e2e2e3;
+  --vwa-c-gutter: #e2e2e3;
+}
+
+.dark {
+  --vwa-c-border: #3c3f44;
+  --vwa-c-divider: #2e2e32;
+  --vwa-c-gutter: #000000;
+}
+
+/**
+ * Colors: Text
+ *
+ * - `text-1`: Used for primary text.
+ *
+ * - `text-2`: Used for muted texts, such as "inactive menu" or "info texts".
+ *
+ * - `text-3`: Used for subtle texts, such as "placeholders" or "caret icon".
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-c-text-1: rgba(60, 60, 67);
+  --vwa-c-text-2: rgba(60, 60, 67, 0.78);
+  --vwa-c-text-3: rgba(60, 60, 67, 0.56);
+}
+
+.dark {
+  --vwa-c-text-1: rgba(255, 255, 245, 0.86);
+  --vwa-c-text-2: rgba(235, 235, 245, 0.6);
+  --vwa-c-text-3: rgba(235, 235, 245, 0.38);
+}
+
+/**
+ * Colors: Function
+ *
+ * - `default`: The color used purely for subtle indication without any
+ *   special meanings attached to it such as bg color for menu hover state.
+ *
+ * - `brand`: Used for primary brand colors, such as link text, button with
+ *   brand theme, etc.
+ *
+ * - `tip`: Used to indicate useful information. The default theme uses the
+ *   brand color for this by default.
+ *
+ * - `warning`: Used to indicate warning to the users. Used in custom
+ *   container, badges, etc.
+ *
+ * - `danger`: Used to show error, or dangerous message to the users. Used
+ *   in custom container, badges, etc.
+ *
+ * To understand the scaling system, refer to "Colors: Palette" section.
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-c-default-1: var(--vwa-c-gray-1);
+  --vwa-c-default-2: var(--vwa-c-gray-2);
+  --vwa-c-default-3: var(--vwa-c-gray-3);
+  --vwa-c-default-soft: var(--vwa-c-gray-soft);
+
+  --vwa-c-brand-1: var(--vwa-c-indigo-1);
+  --vwa-c-brand-2: var(--vwa-c-indigo-2);
+  --vwa-c-brand-3: var(--vwa-c-indigo-3);
+  --vwa-c-brand-soft: var(--vwa-c-indigo-soft);
+
+  --vwa-c-tip-1: var(--vwa-c-brand-1);
+  --vwa-c-tip-2: var(--vwa-c-brand-2);
+  --vwa-c-tip-3: var(--vwa-c-brand-3);
+  --vwa-c-tip-soft: var(--vwa-c-brand-soft);
+
+  --vwa-c-warning-1: var(--vwa-c-yellow-1);
+  --vwa-c-warning-2: var(--vwa-c-yellow-2);
+  --vwa-c-warning-3: var(--vwa-c-yellow-3);
+  --vwa-c-warning-soft: var(--vwa-c-yellow-soft);
+
+  --vwa-c-danger-1: var(--vwa-c-red-1);
+  --vwa-c-danger-2: var(--vwa-c-red-2);
+  --vwa-c-danger-3: var(--vwa-c-red-3);
+  --vwa-c-danger-soft: var(--vwa-c-red-soft);
+}
+
+
+/**
+ * Shadows
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --vwa-shadow-2: 0 3px 12px rgba(0, 0, 0, 0.07), 0 1px 4px rgba(0, 0, 0, 0.07);
+  --vwa-shadow-3: 0 12px 32px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.08);
+  --vwa-shadow-4: 0 14px 44px rgba(0, 0, 0, 0.12), 0 3px 9px rgba(0, 0, 0, 0.12);
+  --vwa-shadow-5: 0 18px 56px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+/**
+ * Z-indexes
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-z-index-footer: 10;
+  --vwa-z-index-local-nav: 20;
+  --vwa-z-index-nav: 30;
+  --vwa-z-index-layout-top: 40;
+  --vwa-z-index-backdrop: 50;
+  --vwa-z-index-sidebar: 60;
+}
+
+/**
+ * Icons
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='20' width='20' stroke='rgba(128,128,128,1)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2'/%3E%3C/svg%3E");
+  --vwa-icon-copied: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='20' width='20' stroke='rgba(128,128,128,1)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9 2 2 4-4'/%3E%3C/svg%3E");
+}
+
+/**
+ * Layouts
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-layout-max-width: 1280px;
+}
+
+/**
+ * Component: Header Anchor
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-header-anchor-symbol: '#';
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-button-brand-border: transparent;
+  --vwa-button-brand-text: var(--vwa-c-white);
+  --vwa-button-brand-bg: var(--vwa-c-brand-3);
+  --vwa-button-brand-hover-border: transparent;
+  --vwa-button-brand-hover-text: var(--vwa-c-white);
+  --vwa-button-brand-hover-bg: var(--vwa-c-brand-2);
+  --vwa-button-brand-active-border: transparent;
+  --vwa-button-brand-active-text: var(--vwa-c-white);
+  --vwa-button-brand-active-bg: var(--vwa-c-brand-1);
+
+  --vwa-button-alt-border: transparent;
+  --vwa-button-alt-text: var(--vwa-c-text-1);
+  --vwa-button-alt-bg: var(--vwa-c-default-3);
+  --vwa-button-alt-hover-border: transparent;
+  --vwa-button-alt-hover-text: var(--vwa-c-text-1);
+  --vwa-button-alt-hover-bg: var(--vwa-c-default-2);
+  --vwa-button-alt-active-border: transparent;
+  --vwa-button-alt-active-text: var(--vwa-c-text-1);
+  --vwa-button-alt-active-bg: var(--vwa-c-default-1);
+
+  --vwa-button-sponsor-border: var(--vwa-c-text-2);
+  --vwa-button-sponsor-text: var(--vwa-c-text-2);
+  --vwa-button-sponsor-bg: transparent;
+  --vwa-button-sponsor-hover-border: var(--vwa-c-sponsor);
+  --vwa-button-sponsor-hover-text: var(--vwa-c-sponsor);
+  --vwa-button-sponsor-hover-bg: transparent;
+  --vwa-button-sponsor-active-border: var(--vwa-c-sponsor);
+  --vwa-button-sponsor-active-text: var(--vwa-c-sponsor);
+  --vwa-button-sponsor-active-bg: transparent;
+}
+
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-custom-block-font-size: 14px;
+  --vwa-custom-block-code-font-size: 13px;
+
+  --vwa-custom-block-info-border: transparent;
+  --vwa-custom-block-info-text: var(--vwa-c-text-1);
+  --vwa-custom-block-info-bg: var(--vwa-c-default-soft);
+  --vwa-custom-block-info-code-bg: var(--vwa-c-default-soft);
+
+  --vwa-custom-block-tip-border: transparent;
+  --vwa-custom-block-tip-text: var(--vwa-c-text-1);
+  --vwa-custom-block-tip-bg: var(--vwa-c-brand-soft);
+  --vwa-custom-block-tip-code-bg: var(--vwa-c-brand-soft);
+
+  --vwa-custom-block-warning-border: transparent;
+  --vwa-custom-block-warning-text: var(--vwa-c-text-1);
+  --vwa-custom-block-warning-bg: var(--vwa-c-warning-soft);
+  --vwa-custom-block-warning-code-bg: var(--vwa-c-warning-soft);
+
+  --vwa-custom-block-danger-border: transparent;
+  --vwa-custom-block-danger-text: var(--vwa-c-text-1);
+  --vwa-custom-block-danger-bg: var(--vwa-c-danger-soft);
+  --vwa-custom-block-danger-code-bg: var(--vwa-c-danger-soft);
+
+  --vwa-custom-block-details-border: var(--vwa-custom-block-info-border);
+  --vwa-custom-block-details-text: var(--vwa-custom-block-info-text);
+  --vwa-custom-block-details-bg: var(--vwa-custom-block-info-bg);
+  --vwa-custom-block-details-code-bg: var(--vwa-custom-block-info-code-bg);
+}
+
+/**
+ * Component: Input
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-input-border-color: var(--vwa-c-border);
+  --vwa-input-bg-color: var(--vwa-c-bg-alt);
+
+  --vwa-input-switch-bg-color: var(--vwa-c-gray-soft);
+}
+
+/**
+ * Component: Nav
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-nav-height: 64px;
+  --vwa-nav-bg-color: var(--vwa-c-bg);
+  --vwa-nav-screen-bg-color: var(--vwa-c-bg);
+  --vwa-nav-logo-height: 24px;
+}
+
+.hide-nav {
+  --vwa-nav-height: 0px;
+}
+
+.hide-nav .VPSidebar {
+  --vwa-nav-height: 22px;
+}
+
+/**
+ * Component: Local Nav
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-local-nav-bg-color: var(--vwa-c-bg);
+}
+
+/**
+ * Component: Sidebar
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-sidebar-width: 272px;
+  --vwa-sidebar-bg-color: var(--vwa-c-bg-alt);
+}
+
+/**
+ * Colors Backdrop
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-backdrop-bg-color: rgba(0, 0, 0, 0.6);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-home-hero-name-color: var(--vwa-c-brand-1);
+  --vwa-home-hero-name-background: transparent;
+
+  --vwa-home-hero-image-background-image: none;
+  --vwa-home-hero-image-filter: none;
+}
+
+/**
+ * Component: Badge
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-badge-info-border: transparent;
+  --vwa-badge-info-text: var(--vwa-c-text-2);
+  --vwa-badge-info-bg: var(--vwa-c-default-soft);
+
+  --vwa-badge-tip-border: transparent;
+  --vwa-badge-tip-text: var(--vwa-c-brand-1);
+  --vwa-badge-tip-bg: var(--vwa-c-brand-soft);
+
+  --vwa-badge-warning-border: transparent;
+  --vwa-badge-warning-text: var(--vwa-c-warning-1);
+  --vwa-badge-warning-bg: var(--vwa-c-warning-soft);
+
+  --vwa-badge-danger-border: transparent;
+  --vwa-badge-danger-text: var(--vwa-c-danger-1);
+  --vwa-badge-danger-bg: var(--vwa-c-danger-soft);
+}
+
+/**
+ * Component: Carbon Ads
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-carbon-ads-text-color: var(--vwa-c-text-1);
+  --vwa-carbon-ads-poweredby-color: var(--vwa-c-text-2);
+  --vwa-carbon-ads-bg-color: var(--vwa-c-bg-soft);
+  --vwa-carbon-ads-hover-text-color: var(--vwa-c-brand-1);
+  --vwa-carbon-ads-hover-poweredby-color: var(--vwa-c-text-1);
+}
+
+/**
+  * Component: Local Search
+  * -------------------------------------------------------------------------- */
+
+:root {
+  --vwa-local-search-bg: var(--vwa-c-bg);
+  --vwa-local-search-result-bg: var(--vwa-c-bg);
+  --vwa-local-search-result-border: var(--vwa-c-divider);
+  --vwa-local-search-result-selected-bg: var(--vwa-c-bg);
+  --vwa-local-search-result-selected-border: var(--vwa-c-brand-1);
+  --vwa-local-search-highlight-bg: var(--vwa-c-brand-1);
+  --vwa-local-search-highlight-text: var(--vwa-c-neutral-inverse);
+}
