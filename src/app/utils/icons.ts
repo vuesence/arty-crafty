@@ -4,7 +4,7 @@ const svgResources = new Map();
 const imageResources = new Map();
 
 function loadIcons() {
-  let modules = import.meta.glob("@/assets/images/**/*.svg", {
+  let modules = import.meta.glob("@/app/assets/images/**/*.svg", {
     as: "raw",
     eager: true,
   });
@@ -13,7 +13,7 @@ function loadIcons() {
     svgResources.set(name, modules[fileName]);
   }
 
-  modules = import.meta.glob("@/assets/images/**/*.png", {
+  modules = import.meta.glob("@/app/assets/images/**/*.png", {
     as: "url",
     eager: true,
   });
