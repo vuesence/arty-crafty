@@ -1,8 +1,8 @@
 {
-  "description": "Acme Corporation webapp",
+  "description": "Arty-Crafty website",
   "dir": "auto",
   "display": "standalone",
-  "name": "Acme Inc.",
+  "name": "Arty Crafty",
   "orientation": "any",
   "scope": "/",
   "short_name": "Acme",
