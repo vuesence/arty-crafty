@@ -1,17 +1,17 @@
 import { createApp } from "vue";
 
-// import "./assets/styles/vars.css";
-// import "./styles/base.css";
+// import "./app/assets/styles/vars.css";
+// import "./app/styles/base.css";
 
-import "./assets/styles/base.scss";
-import "./assets/styles/custom.scss";
-import App from "./App.vue";
-import { router } from "./router";
-import { loadIcons } from "@/utils/icons";
-import { initAppearance } from "@/composables/useAppConfig";
-import { api } from "@/services/api";
+import "./app/assets/styles/base.scss";
+import "./app/assets/styles/custom.scss";
+import App from "./app/App.vue";
+import { router } from "./app/router";
+import { loadIcons } from "@/app/utils/icons";
+import { initAppearance } from "@/app/composables/useAppConfig";
+import { api } from "@/app/services/api";
 
-import { useI18n } from "@/composables/useI18nLight";
+import { useI18n } from "@/app/composables/useI18nLight";
 
 const { initI18n } = useI18n();
 
