@@ -3,14 +3,15 @@
 
 <template>
   <main class="content-pane">
+    <router-view />
     <!-- <Transition>
-      <router-view />
     </Transition> -->
-    <router-view v-slot="{ Component }">
+
+    <!-- <router-view v-slot="{ Component }">
       <Transition>
         <component :is="Component" />
       </Transition>
-    </router-view>
+    </router-view> -->
 
     <div class="content">
     </div>

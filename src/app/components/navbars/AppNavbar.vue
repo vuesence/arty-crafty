@@ -10,10 +10,12 @@ function onLinkClick(event, navigate) {
 }
 
 const links = [
-  { name: "home", label: "Home", icon: "home" },
-  { name: "about", label: "About", icon: "about" },
-  { name: "contacts", label: "Contact us", icon: "contact-us" },
+  { title: "Декорация", route: { name: "category", params: { categoryId: 3 } } },
+  { title: "Войлочные", route: { name: "category", params: { categoryId: 6 } } },
+  { title: "Aмигуруми", route: { name: "category", params: { categoryId: 5 } } },
+  { title: "Композиция", route: { name: "category", params: { categoryId: 7 } } },
 ];
+
 const footerLinks = [
   { name: "home", label: "Change account", icon: "change-account" },
   { name: "home", label: "Logout", icon: "logout" },
@@ -24,10 +26,10 @@ const footerLinks = [
   <nav class="navbar">
     <div class="main">
       <ul>
-        <li v-for="link in links" :key="link.label">
-          <router-link v-slot="{ href, navigate }" :to="{ name: link.name }" custom>
-            <BaseIcon size="24" :name="link.icon" class="icon" fill1="currentColor" />
-            <a role="link" :href="href" @click="onLinkClick($event, navigate)">{{ link.label }}</a>
+        <li v-for="link in links" :key="link.title">
+          <router-link v-slot="{ href, navigate }" :to="link.route" custom>
+            <!-- <BaseIcon size="24" :name="link.icon" class="icon" fill1="currentColor" /> -->
+            <a role="link" :href="href" @click="onLinkClick($event, navigate)">{{ link.title }}</a>
           </router-link>
         </li>
       </ul>

@@ -1,30 +1,9 @@
 <script setup lang="ts">
 import AppContentPane from "@/app/components/AppContentPane.vue";
-
 import AppNavigationDrawer from "@/app/components/drawers/TouchSlideoutDrawer.vue";
-
-// import AppNavigationDrawer from "@/app/components/drawers/TouchSlideoutDrawer.vue";
-
-// import AppSidebar from "@/app/components/navbars/MantineSimpleNavbar.vue";
-
-import AppSidebar from "@/app/components/navbars/MantineSimpleNavbar.vue";
-
-import AppHeader from "@/app/components/headers/MantineSimpleHeader.vue";
-
-// import AppHeader from "@/app/components/headers/MantineLayeredHeader.vue";
-
-// import AppHeader from "@/app/components/headers/MantineSimpleHeader.vue";
-
-// import AppFooter from "@/app/components/footers/RichFooter.vue";
-
-// import AppFooter from "@/app/components/footers/DistributedFooter.vue";
-
-import AppFooter from "@/app/components/footers/MantineSimpleFooter.vue";
-
-// import AppFooter from "@/app/components/footers/MantineRichFooter.vue";
-
-// import AppFooter from "@/app/components/footers/MantineSimpleFooter.vue";
-
+import AppSidebar from "@/app/components/navbars/AppNavbar.vue";
+import AppHeader from "@/app/components/headers/AppHeader.vue";
+import AppFooter from "@/app/components/footers/AppFooter.vue";
 import { useAppConfig } from "@/app/composables/useAppConfig";
 
 const { isDrawerOpen } = useAppConfig();
