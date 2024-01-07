@@ -1,5 +1,6 @@
 // import auth from "./auth";
 import utils from "./utils";
+import products from "./products";
 import { authInterceptor, notificationInterceptor } from "./interceptors";
 import jsonrpc from "./jsonrpc";
 import http from "./http";
@@ -10,6 +11,7 @@ import http from "./http";
 
 const api = {
   utils,
+  products,
   http,
   init() {
     http.setOptions({
