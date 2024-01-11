@@ -1,28 +1,43 @@
 import { ref } from "vue";
 
-const favourites = ref<Set<number>>(new Set());
+const initialSet = new Set(JSON.parse(localStorage.getItem("ac-favourites")));
+
+const favourites = ref<Set<number>>(initialSet);
 
 export function useFavourites() {
-  function addToFavourites(productId: number) {
-    favourites.value.add(productId);
-  };
-  function removeFromFavourites(productId: number) {
-    favourites.value.delete(productId);
-  }
+  /**
+   * Determines if a product is in the favourites list.
+   *
+   * @param {number} productId - The ID of the product to check.
+   * @return {boolean} Returns true if the product is in the favourites list, otherwise false.
+   */
   function isInFavourites(productId: number): boolean {
     return favourites.value.has(productId);
   }
+
+  /**
+   * Toggles the favourite status of a product.
+   *
+   * @param {number} productId - The ID of the product to toggle.
+   * @return {void}
+   */
   function toggleFavourite(productId: number) {
-    if (isInFavourites(productId)) {
-      removeFromFavourites(productId);
+    if (favourites.value.has(productId)) {
+      favourites.value.delete(productId);
     } else {
-      addToFavourites(productId);
+      favourites.value.add(productId);
     }
+    localStorage.setItem("ac-favourites", JSON.stringify(listFavourites()));
   }
 
-  function listFavourites() {
+  /**
+   * Returns a list of favorite products.
+   *
+   * @returns {Array<number>} - The list of favorite product IDs.
+   */
+  function listFavourites(): Array<number> {
     return Array.from(favourites.value);
   }
 
-  return { toggleFavourite, listFavourites };
+  return { isInFavourites, toggleFavourite, listFavourites };
 }
