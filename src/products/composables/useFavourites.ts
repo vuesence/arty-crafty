@@ -1,8 +1,7 @@
 import { ref } from "vue";
 
-const initialSet = new Set(JSON.parse(localStorage.getItem("ac-favourites")));
-
-const favourites = ref<Set<number>>(initialSet);
+const favArray = JSON.parse(localStorage.getItem("ac-favourites")) as number[] ?? [];
+const favourites = ref<Set<number>>(new Set(favArray));
 
 export function useFavourites() {
   /**

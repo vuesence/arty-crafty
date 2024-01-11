@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import IconBadge from "@/app/components/ui/IconBadge.vue";
 import { useFavourites } from "@/products/composables/useFavourites";
 import AppSearchBar from "@/app/components/searchbar/AppSearchBar.vue";
 import BaseIcon from "@/app/components/ui/BaseIcon.vue";
@@ -47,7 +48,7 @@ const topnavItems = [
           <div class="item">
             <div class="icon-wrapper">
               <BaseIcon size="20" name="favourites" class="icon" fill1="white" />
-              <span class="badge">{{ listFavourites().length }}</span>
+              <IconBadge :num="listFavourites().length" />
             </div>
             <span class="title">Избранное</span>
           </div>
@@ -148,17 +149,6 @@ const topnavItems = [
           }
           .icon-wrapper {
             position: relative;
-            .badge {
-              position: absolute;
-              top: -5px;
-              right: -5px;
-              border-radius: 50%;
-              background-color: red;
-              font-size: 8px;
-              color: white;
-              line-height: 7px;
-              padding: 3px 5px;;
-            }
           }
         }
 
