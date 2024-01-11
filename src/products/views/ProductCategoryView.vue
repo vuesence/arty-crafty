@@ -15,7 +15,7 @@ onMounted(async () => {
 <template>
   <div>
     <h2>Category name</h2>
-    <div ref="scrollComponent" class="product-grid">
+    <div ref="scrollComponent" class="products">
       <ProductCard v-for="product in products" :key="product.id" :product="product" class="product-card">
       </ProductCard>
     </div>
@@ -23,7 +23,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.product-grid {
+.products {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
