@@ -11,7 +11,7 @@ defineProps({
   <span v-if="num > 0" class="badge">{{ num }}</span>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .badge {
   position: absolute;
   top: -5px;

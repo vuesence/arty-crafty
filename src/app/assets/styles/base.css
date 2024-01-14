@@ -1,9 +1,9 @@
 @import "./vars.css";
-// @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
-// @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* // @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
+// @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
 
 :root {
-  // font-family: 'Roboto', sans-serif;
+  /* // font-family: 'Roboto', sans-serif;
   // font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   // line-height: 1.5;
   // font-weight: 400;
@@ -16,7 +16,7 @@
   // text-rendering: optimizeLegibility;
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
-  // -webkit-text-size-adjust: 100%;
+  // -webkit-text-size-adjust: 100%; */
 }
 
 @media screen and (min-width: 960px) {
@@ -44,12 +44,12 @@ html.dark {
 }
 
 body {
-  // margin: 0;
+  /* // margin: 0; */
   display: flex;
   place-items: center;
   min-width: 320px;
-  // background-color: white;
-  // min-height: 100vh;
+  /* // background-color: white; */
+  /* // min-height: 100vh; */
   margin: 0;
   width: 100%;
   min-width: 320px;
@@ -68,14 +68,14 @@ body {
 }
 
 a {
-  // font-weight: 500;
-  // color: #646cff;
+  /* // font-weight: 500; */
+  /* // color: #646cff; */
   color: inherit;
   text-decoration: inherit;
   transition: color .25s;
-  // &:hover {
+  /* // &:hover {
   //   color: #535bf2;
-  // }
+  // } */
 }
 
 ol,
@@ -173,10 +173,10 @@ select {
 }
 
 #app {
-  // min-height: 100vh;
+  /* // min-height: 100vh; */
   width: var(--vwa-layout-max-width);
   max-width: var(--vwa-layout-max-width);
   margin: 0 auto;
-  // padding: 2em 2em 0;
-  // text-align: center;
+  /* // padding: 2em 2em 0; */
+  /* // text-align: center; */
 }

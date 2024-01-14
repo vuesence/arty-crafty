@@ -22,23 +22,24 @@ onMounted(async () => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .products {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 1em;
   gap: 2rem;
+}
+</style>
+
+<!--
+
   // &::after {
   //   content: "";
   //   flex: auto;
   // }
   // .product-card {
   // }
-}
-</style>
-
-<!--
 
 const portionSize = 40;
 const portion = ref(1);

@@ -72,14 +72,14 @@ const topnavItems = [
   </header>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: sticky;
   top: 0;
-  // height: 4em;
+  /* // height: 4em; */
   padding: 10px 20px 3px;
   background-color: var(--vwa-c-bg);
   z-index: 3;
@@ -92,7 +92,7 @@ const topnavItems = [
     justify-content: space-between;
     margin-bottom: 0.5rem;
 
-    // margin-bottom: 1em;
+    /* // margin-bottom: 1em; */
     .logo {
       max-width: 200px;
       display: flex;
@@ -126,7 +126,7 @@ const topnavItems = [
 
         .item {
           border: 0;
-          // color: var(--vwa-c-text-2);
+          /* // color: var(--vwa-c-text-2); */
           color: var(--vwa-c-border);
           display: flex;
           flex-direction: column;

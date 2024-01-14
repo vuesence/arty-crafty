@@ -17,7 +17,7 @@ import BaseIcon from "@/app/components/ui/BaseIcon.vue";
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .search-bar {
     display: flex;
     transition: all 0.3s ease-in-out;
@@ -32,7 +32,7 @@ import BaseIcon from "@/app/components/ui/BaseIcon.vue";
             font-size: 15px;
             vertical-align: middle;
             background-color: var(--vwa-c-bg-soft);
-            // border: 1px solid var(--vwa-c-border);
+            /* // border: 1px solid var(--vwa-c-border); */
             border: 1px solid var(--vwa-c-divider);
             border-right: 0;
             border-radius: 4px 0 0 4px;
@@ -46,12 +46,12 @@ import BaseIcon from "@/app/components/ui/BaseIcon.vue";
 
     .search-button {
         position: relative;
-        // height: 100%;
+        /* // height: 100%; */
 
         button {
             height: 100%;
             background-color: #f8d9bd ;
-            // border: none;
+            /* // border: none; */
             border-radius: 0 4px 4px 0;
             border-color: var(--vwa-c-divider);
             cursor: pointer;
@@ -65,13 +65,13 @@ import BaseIcon from "@/app/components/ui/BaseIcon.vue";
     }
     &:focus-within {
         & button {
-            // color: var(--group-color-focus);
+            /* // color: var(--group-color-focus); */
             background-color: #f99a43 ;
-            // border-color: #777;
+            /* // border-color: #777; */
             border-color: #f99a43 ;
         }
         & input {
-            // color: var(--group-color-focus);
+            /* // color: var(--group-color-focus); */
             border-color: #f99a43 ;
         }
     }

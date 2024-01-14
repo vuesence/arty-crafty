@@ -55,7 +55,7 @@ function addToCart() {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .product-card {
   border: 1px solid var(--vwa-c-divider);
   border-radius: 3px;
@@ -80,9 +80,9 @@ function addToCart() {
       margin: 1rem;
       transition: all 0.1s ease-in-out;
       color: red !important;
-      // &.selected {
-      //   color: red !important;
-      // }
+      /*&.selected {
+         color: red !important;
+      }*/
     }
   }
 
