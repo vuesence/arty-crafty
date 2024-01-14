@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "toy 1",
+    "shortDesc": "Высота: 10см",
+    "images": ["toy.jpg"],
+    "price": 100
+  },
+  {
+    "id": 2,
+    "title": "toy 2",
+    "shortDesc": "Высота: 10см",
+    "images": ["toy.jpg"],
+    "price": 300
+  },
+  {
+    "id": 3,
+    "title": "toy 1",
+    "shortDesc": "Высота: 10см",
+    "images": ["toy.jpg"],
+    "price": 100
+  },
+  {
+    "id": 4,
+    "title": "toy 1",
+    "shortDesc": "Высота: 10см",
+    "images": ["toy.jpg"],
+    "price": 100
+  }
+]
