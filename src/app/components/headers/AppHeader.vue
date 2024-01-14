@@ -47,7 +47,7 @@ const topnavItems = [
         <RouterLink class="link" :to="{ name: 'favourites' }">
           <div class="item">
             <div class="icon-wrapper">
-              <BaseIcon size="20" name="favourites" class="icon" fill1="white" />
+              <BaseIcon size="20" name="favourites" class="icon" />
               <IconBadge :num="listFavourites().length" />
             </div>
             <span class="title">Избранное</span>
