@@ -1,6 +1,7 @@
-# Vue webapp template
+# Arty-Crafty online store
 
-<!-- For npmjs.org -->
-Empty NPM package for the purpose of existence of `create-vue-webapp` package.
+Online showcase/store/marketplace built on Vue 3
 
-Full documentation is available at [https://vue-faq.org/en/vue-webapp/](https://vue-faq.org/en/vue-webapp/)
+## Full documentation
+
+[https://vue-faq.org/ru/arty-crafty/](https://vue-faq.org/ru/arty-crafty/)
