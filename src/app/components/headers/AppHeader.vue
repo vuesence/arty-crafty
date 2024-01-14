@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import IconBadge from "@/app/components/ui/IconBadge.vue";
+import { useFavourites } from "@/products/composables/useFavourites";
 import AppSearchBar from "@/app/components/searchbar/AppSearchBar.vue";
 import BaseIcon from "@/app/components/ui/BaseIcon.vue";
 import HamburgerIcon from "@/app/components/ui/HamburgerIcon.vue";
@@ -6,6 +8,7 @@ import { useAppConfig } from "@/app/composables/useAppConfig";
 
 // import ThemeToggle from "@/app/components/ui/ThemeToggle.vue";
 const { isDrawerOpen } = useAppConfig();
+const { listFavourites } = useFavourites();
 
 const links = [
   { title: "Декорация", route: { name: "category", params: { categoryId: 3 } } },
@@ -15,7 +18,7 @@ const links = [
 ];
 
 const topnavItems = [
-  { title: "Избранное", icon: "favourites", route: { name: "favourites" } },
+  // { title: "Избранное", icon: "favourites", route: { name: "favourites" } },
   { title: "Корзина", icon: "cart", route: { name: "cart" } },
   { title: "Войти", icon: "account", route: { name: "login" } },
 ];
@@ -41,10 +44,21 @@ const topnavItems = [
         <!-- <button class="">
           <BaseIcon size="20" name="orders" class="icon" fill1="white" />
         </button> -->
-        <RouterLink v-for="item in topnavItems" :key="item.title" class="link" :to="item.route">
+        <RouterLink class="link" :to="{ name: 'favourites' }">
           <div class="item">
-            <BaseIcon size="20" :name="item.icon" class="icon" fill1="white" />
-            <span class="title">{{ item.title }}</span>
+            <div class="icon-wrapper">
+              <BaseIcon size="20" name="favourites" class="icon" />
+              <IconBadge :num="listFavourites().length" />
+            </div>
+            <span class="title">Избранное</span>
+          </div>
+        </RouterLink>
+        <RouterLink v-for="item in topnavItems" :key="item.title" class="link" :to="item.route">
+          <div class="item-wrapper">
+            <div class="item">
+              <BaseIcon size="20" :name="item.icon" class="icon" fill1="white" />
+              <span class="title">{{ item.title }}</span>
+            </div>
           </div>
         </RouterLink>
         <HamburgerIcon v-model="isDrawerOpen" class="drawer-toggle" />
@@ -70,6 +84,7 @@ const topnavItems = [
   background-color: var(--vwa-c-bg);
   z-index: 3;
   border-bottom: 1px solid var(--vwa-c-divider);
+
   .main-header {
     display: flex;
     align-items: center;
@@ -82,6 +97,7 @@ const topnavItems = [
       max-width: 200px;
       display: flex;
       align-items: center;
+
       .notebook &,
       .desktop & {
         width: 15rem;
@@ -92,12 +108,14 @@ const topnavItems = [
         font-size: 1.2rem;
         font-weight: 700;
         color: var(--vwa-c-text-1);
+
         .mobile &,
         .tablet & {
           display: none;
         }
       }
     }
+
     .search-bar {
       margin: 0 0 0 1rem;
     }
@@ -106,30 +124,37 @@ const topnavItems = [
       display: flex;
       align-items: center;
 
-      .item {
-        border: 0;
-        // color: var(--vwa-c-text-2);
-        color: var(--vwa-c-border);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 1rem;
-        transition: all 0.3s ease-in-out;
-        .title {
-          font-weight: 300;
-          font-size: 0.8rem;
+        .item {
+          border: 0;
+          // color: var(--vwa-c-text-2);
+          color: var(--vwa-c-border);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin: 0 1rem;
+          transition: all 0.3s ease-in-out;
+
+          .title {
+            font-weight: 300;
+            font-size: 0.8rem;
+          }
+
+          &:hover {
+            color: var(--vwa-c-text-2);
+          }
+
+          .mobile &,
+          .tablet & {
+            display: none;
+          }
+          .icon-wrapper {
+            position: relative;
+          }
         }
-        &:hover {
-          color: var(--vwa-c-text-2);
-        }
-        .mobile &,
-        .tablet & {
-          display: none;
-        }
-      }
 
       .drawer-toggle {
         margin: 0 1em;
+
         .notebook &,
         .desktop & {
           display: none;
