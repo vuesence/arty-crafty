@@ -9,6 +9,8 @@ import http from "./http";
 
 // const auth: any = null;
 
+const SUPABASE_API = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJvcWxyaW9zbXRxenFleW1uY2RiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDQ5OTI3MjgsImV4cCI6MjAyMDU2ODcyOH0.lmmdwkqv6JjO5-uNIwxvXXRITMI9OugJx5aFKfxylXM";
+
 const api = {
   utils,
   products,
@@ -16,7 +18,11 @@ const api = {
   init() {
     http.setOptions({
       baseUrl: import.meta.env.VITE_API_URL,
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${SUPABASE_API}`,
+        "apikey": SUPABASE_API,
+      },
       token: () => null,
       logout: () => null,
     });

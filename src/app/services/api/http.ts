@@ -28,7 +28,10 @@ const http = {
 
   async get(url) {
     try {
-      return fetch(url)
+      return fetch(url, {
+        method: "GET",
+        headers: options.headers,
+      })
         .then(response => response.json());
     } catch (error) {
       console.log(error);

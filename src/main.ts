@@ -9,19 +9,24 @@ import App from "./app/App.vue";
 import { router } from "./app/router";
 import { loadIcons } from "@/app/utils/icons";
 import { initAppearance } from "@/app/composables/useAppConfig";
+import { loadCategories } from "@/products/composables/useProductCatalog";
 import { api } from "@/app/services/api";
 
 import { useI18n } from "@/app/composables/useI18nLight";
 
-const { initI18n } = useI18n();
+// const { initI18n } = useI18n();
 
 const app = createApp(App);
 app.use(router);
 loadIcons();
 initAppearance();
 api.init();
-initI18n();
+loadCategories();
+// initI18n();
 
-await Promise.all([router.isReady()]);
+await Promise.all([
+  router.isReady(),
+  // app.init(),
+]);
 
 app.mount("#app");

@@ -2,27 +2,25 @@
 </script>
 
 <template>
-  <main class="content-pane">
+  <main class="main-content">
     <router-view />
-    <!-- <Transition>
-    </Transition> -->
 
     <!-- <router-view v-slot="{ Component }">
-      <Transition>
+      <Transition name="fade">
         <component :is="Component" />
       </Transition>
     </router-view> -->
 
-    <div class="content">
-    </div>
+    <!-- <div class="content" /> -->
   </main>
 </template>
 
 <style scoped>
-.content-pane {
+.main-content {
   padding: 1em 2em;
+  width: 100%;
 }
-.v-enter-active,
+/* .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
 }
@@ -30,5 +28,5 @@
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
-}
+} */
 </style>

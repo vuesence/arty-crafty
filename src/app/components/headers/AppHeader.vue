@@ -1,27 +1,35 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import IconBadge from "@/app/components/ui/IconBadge.vue";
 import { useFavourites } from "@/products/composables/useFavourites";
 import AppSearchBar from "@/app/components/searchbar/AppSearchBar.vue";
 import BaseIcon from "@/app/components/ui/BaseIcon.vue";
 import HamburgerIcon from "@/app/components/ui/HamburgerIcon.vue";
 import { useAppConfig } from "@/app/composables/useAppConfig";
+import { useProductCatalog } from "@/products/composables/useProductCatalog";
 
 // import ThemeToggle from "@/app/components/ui/ThemeToggle.vue";
 const { isDrawerOpen } = useAppConfig();
 const { listFavourites } = useFavourites();
+const { productCategories } = useProductCatalog();
+const router = useRouter();
 
-const links = [
-  { title: "Декорация", route: { name: "category", params: { categoryId: 3 } } },
-  { title: "Войлочные", route: { name: "category", params: { categoryId: 6 } } },
-  { title: "Aмигуруми", route: { name: "category", params: { categoryId: 5 } } },
-  { title: "Композиция", route: { name: "category", params: { categoryId: 7 } } },
-];
+// const links = [
+//   { title: "Декорация", route: { name: "category", params: { categoryId: 3 } } },
+//   { title: "Войлочные", route: { name: "category", params: { categoryId: 6 } } },
+//   { title: "Aмигуруми", route: { name: "category", params: { categoryId: 5 } } },
+//   { title: "Композиция", route: { name: "category", params: { categoryId: 7 } } },
+// ];
 
 const topnavItems = [
   // { title: "Избранное", icon: "favourites", route: { name: "favourites" } },
   { title: "Корзина", icon: "cart", route: { name: "cart" } },
   { title: "Войти", icon: "account", route: { name: "login" } },
 ];
+
+function openCategory(id) {
+  router.push({ name: "category", params: { categoryId: id } });
+}
 </script>
 
 <template>
@@ -65,9 +73,9 @@ const topnavItems = [
       </nav>
     </div>
     <div class="links">
-      <RouterLink v-for="link in links" :key="link.title" class="link" :to="link.route">
-        {{ link.title }}
-      </RouterLink>
+      <div v-for="category in productCategories" :key="category.id" class="link" @click="openCategory(category.id)">
+        {{ category.title }}
+      </div>
     </div>
   </header>
 </template>
@@ -185,6 +193,7 @@ const topnavItems = [
       text-decoration: none;
       color: var(--vwa-c-text-2);
       transition: all 0.3s ease-in-out;
+      cursor: pointer;
 
       &:hover {
         background-color: var(--vwa-c-bg-soft);

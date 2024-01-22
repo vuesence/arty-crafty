@@ -11,7 +11,7 @@ const props = defineProps({
 });
 
 const router = useRouter();
-const { toggleFavourite, listFavourites, isInFavourites } = useFavourites();
+const { toggleFavourite, isInFavourites } = useFavourites();
 
 function gotoProduct() {
   router.push({ name: "product", params: { productId: props.product.id } });
@@ -24,9 +24,8 @@ function addToCart() {
 
 <template>
   <div class="product-card">
-    {{ listFavourites() }}
     <div class="images">
-      <img :src="`/arty-crafty/api/${product.images[0]}`" :alt="product.title" @click="gotoProduct()">
+      <img :src="`/arty-crafty/api/${product.desc.images[0]}`" :alt="product.title" @click="gotoProduct()">
       <BaseIcon
         size="50"
         name="favourite"
@@ -41,11 +40,11 @@ function addToCart() {
         {{ product.title }}
       </h2>
       <div class="desc">
-        {{ product.desc }}
+        {{ product.desc.desc }}
       </div>
       <div class="price-wrapper" @click="addToCart()">
         <div class="price">
-          {{ product.price }} <span class="currency-symbol">₽</span>
+          {{ product.desc.price }} <span class="currency-symbol">₽</span>
         </div>
         <!-- <button class="add-to-cart-button" type="button" title="Add to cart">
           <BaseIcon size="20" name="add-to-cart" class="icon" fill1="white" />

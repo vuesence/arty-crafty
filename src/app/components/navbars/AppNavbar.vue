@@ -1,36 +1,47 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import BaseIcon from "@/app/components/ui/BaseIcon.vue";
 import { useAppConfig } from "@/app/composables/useAppConfig";
+import { useProductCatalog } from "@/products/composables/useProductCatalog";
 
 const { closeDrawer } = useAppConfig();
+const { productCategories } = useProductCatalog();
+const router = useRouter();
 
 function onLinkClick(event, navigate) {
   closeDrawer();
   navigate(event);
 }
 
-const links = [
-  { title: "Декорация", route: { name: "category", params: { categoryId: 3 } } },
-  { title: "Войлочные", route: { name: "category", params: { categoryId: 6 } } },
-  { title: "Aмигуруми", route: { name: "category", params: { categoryId: 5 } } },
-  { title: "Композиция", route: { name: "category", params: { categoryId: 7 } } },
-];
+// const links = [
+//   { title: "Декорация", route: { name: "category", params: { categoryId: 3 } } },
+//   { title: "Войлочные", route: { name: "category", params: { categoryId: 6 } } },
+//   { title: "Aмигуруми", route: { name: "category", params: { categoryId: 5 } } },
+//   { title: "Композиция", route: { name: "category", params: { categoryId: 7 } } },
+// ];
 
 const footerLinks = [
   { name: "home", label: "Change account", icon: "change-account" },
   { name: "home", label: "Logout", icon: "logout" },
 ];
+
+function openCategory(id) {
+  router.push({ name: "category", params: { categoryId: id } });
+  closeDrawer();
+}
 </script>
 
 <template>
   <nav class="navbar">
     <div class="main">
       <ul>
-        <li v-for="link in links" :key="link.title">
-          <router-link v-slot="{ href, navigate }" :to="link.route" custom>
-            <!-- <BaseIcon size="24" :name="link.icon" class="icon" fill1="currentColor" /> -->
-            <a role="link" :href="href" @click="onLinkClick($event, navigate)">{{ link.title }}</a>
-          </router-link>
+        <li v-for="category in productCategories" :key="category.id" class="link" @click="openCategory(category.id)">
+          <!-- <router-link v-slot="{ href, navigate }" :to="link.route" custom> -->
+          <!-- <BaseIcon size="24" :name="link.icon" class="icon" fill1="currentColor" /> -->
+          <!-- <a role="link" :href="href" @click="onLinkClick($event, navigate)">{{ link.title }}</a>
+             -->
+          {{ category.title }}
+          <!-- </router-link> -->
         </li>
       </ul>
     </div>
