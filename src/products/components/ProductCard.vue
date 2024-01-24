@@ -25,7 +25,7 @@ function addToCart() {
 <template>
   <div class="product-card">
     <div class="images">
-      <img :src="`/arty-crafty/api/${product.desc.images[0]}`" :alt="product.title" @click="gotoProduct()">
+      <img :src="`/arty-crafty/api/${product.summary.images[0].file}`" :alt="product.title" @click="gotoProduct()">
       <BaseIcon
         size="50"
         name="favourite"
@@ -40,11 +40,11 @@ function addToCart() {
         {{ product.title }}
       </h2>
       <div class="desc">
-        {{ product.desc.desc }}
+        {{ product.summary.shortDesc }}
       </div>
       <div class="price-wrapper" @click="addToCart()">
         <div class="price">
-          {{ product.desc.price }} <span class="currency-symbol">₽</span>
+          {{ product.summary.price }} <span class="currency-symbol">₽</span>
         </div>
         <!-- <button class="add-to-cart-button" type="button" title="Add to cart">
           <BaseIcon size="20" name="add-to-cart" class="icon" fill1="white" />
@@ -67,6 +67,7 @@ function addToCart() {
   .images {
     position: relative;
     img {
+      width: 100%;
       max-width: 100%;
       border-top-right-radius: 3px;
       border-top-left-radius: 3px;

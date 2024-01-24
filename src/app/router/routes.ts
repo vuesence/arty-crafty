@@ -19,6 +19,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/category/:categoryId",
     name: "category",
+    props: true,
     component: ProductCategoryView,
   },
   {

@@ -1,22 +1,35 @@
 <script setup lang="ts">
-import { useRoute } from "vue-router";
+// import { useRoute } from "vue-router";
 import { onMounted, ref, watch } from "vue";
 import ProductCard from "../components/ProductCard.vue";
 import { api } from "@/app/services/api";
 import { useProductCatalog } from "@/products/composables/useProductCatalog";
+import { useFavourites } from "@/products/composables/useFavourites";
 
 // import BaseIcon from "@/app/components/ui/BaseIcon.vue";
+const props = defineProps({
+  categoryId: {
+    type: String,
+    default: "0",
+  },
+});
 
 const products = ref();
 const scrollComponent = ref(null);
 
-const route = useRoute();
+// const route = useRoute();
 const { getCategory } = useProductCatalog();
+const { listFavourites } = useFavourites();
 
-watch(route, async () => {
+// watch(route, async () => {
+watch(() => props.categoryId, async () => {
   // console.log(route.params.categoryId);
   products.value = [];
-  products.value = await api.products.categoryProducts(route.params.categoryId);
+  if (props.categoryId === "0") {
+    products.value = await api.products.products(listFavourites());
+  } else {
+    products.value = await api.products.categoryProducts(props.categoryId);
+  }
 }, { immediate: true });
 
 onMounted(async () => {
@@ -26,7 +39,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <h2>{{ getCategory(route.params.categoryId)?.title }}</h2>
+    <h2>{{ getCategory(props.categoryId)?.title }}</h2>
     <!-- <div ref="scrollComponent"> -->
     <TransitionGroup ref="scrollComponent" name="list" tag="div" class="products">
       <ProductCard

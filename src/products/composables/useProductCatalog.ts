@@ -8,7 +8,7 @@ export async function loadCategories() {
 }
 
 export function getCategory(categoryId) {
-  return productCategories.value.find(c => c.id === +categoryId);
+  return categoryId === "0" ? { title: "Избранное" } : productCategories.value.find(c => c.id === +categoryId);
 }
 
 export function useProductCatalog() {
