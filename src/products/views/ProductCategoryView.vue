@@ -1,18 +1,19 @@
 <script setup lang="ts">
-// import { useRoute } from "vue-router";
 import { onMounted, ref, watch } from "vue";
 import ProductCard from "../components/ProductCard.vue";
 import { api } from "@/app/services/api";
 import { useProductCatalog } from "@/products/composables/useProductCatalog";
 import { useFavourites } from "@/products/composables/useFavourites";
+import { useAppLoader } from "@/app/composables/useAppLoader";
 
-// import BaseIcon from "@/app/components/ui/BaseIcon.vue";
 const props = defineProps({
   categoryId: {
-    type: String,
-    default: "0",
+    type: Number,
+    default: -1,
   },
 });
+
+const { startLoading, stopLoading } = useAppLoader();
 
 const products = ref();
 const scrollComponent = ref(null);
@@ -25,11 +26,13 @@ const { listFavourites } = useFavourites();
 watch(() => props.categoryId, async () => {
   // console.log(route.params.categoryId);
   products.value = [];
-  if (props.categoryId === "0") {
+  startLoading();
+  if (props.categoryId === 0) {
     products.value = await api.products.products(listFavourites());
   } else {
     products.value = await api.products.categoryProducts(props.categoryId);
   }
+  stopLoading();
 }, { immediate: true });
 
 onMounted(async () => {

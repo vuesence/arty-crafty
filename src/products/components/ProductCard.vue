@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import BaseIcon from "@/app/components/ui/BaseIcon.vue";
-import { useFavourites } from "@/products/composables/useFavourites";
+import ProductCardImage from "./ProductCardImage.vue";
+import { slug } from "@/app/utils/slug";
 
 const props = defineProps({
   product: {
@@ -11,30 +11,18 @@ const props = defineProps({
 });
 
 const router = useRouter();
-const { toggleFavourite, isInFavourites } = useFavourites();
 
 function gotoProduct() {
-  router.push({ name: "product", params: { productId: props.product.id } });
+  router.push({ name: "product", params: { productId: `${props.product.id}-${slug(props.product.title)}` } });
 }
 function addToCart() {
   console.log("addToCart", props.product);
-  toggleFavourite(props.product.id);
 }
 </script>
 
 <template>
   <div class="product-card">
-    <div class="images">
-      <img :src="`/arty-crafty/api/${product.summary.images[0].file}`" :alt="product.title" @click="gotoProduct()">
-      <BaseIcon
-        size="50"
-        name="favourite"
-        class="favourite-icon"
-        :class="{ selected: isInFavourites(product.id) }"
-        :fill="isInFavourites(product.id) ? 'currentColor' : 'none'"
-        @click="toggleFavourite(props.product.id)"
-      />
-    </div>
+    <ProductCardImage :product="product" @click="gotoProduct()" />
     <div class="description">
       <h2 class="title">
         {{ product.title }}
@@ -63,29 +51,6 @@ function addToCart() {
   .mobile & {
     width: 100%;
   }
-
-  .images {
-    position: relative;
-    img {
-      width: 100%;
-      max-width: 100%;
-      border-top-right-radius: 3px;
-      border-top-left-radius: 3px;
-    }
-    .favourite-icon {
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 10px;
-      margin: 1rem;
-      transition: all 0.1s ease-in-out;
-      color: red !important;
-      /*&.selected {
-         color: red !important;
-      }*/
-    }
-  }
-
   .description {
     padding: 0.4rem;
 

@@ -3,6 +3,7 @@ import { useRouter } from "vue-router";
 import BaseIcon from "@/app/components/ui/BaseIcon.vue";
 import { useAppConfig } from "@/app/composables/useAppConfig";
 import { useProductCatalog } from "@/products/composables/useProductCatalog";
+import { slug } from "@/app/utils/slug";
 
 const { closeDrawer } = useAppConfig();
 const { productCategories } = useProductCatalog();
@@ -13,19 +14,12 @@ function onLinkClick(event, navigate) {
   navigate(event);
 }
 
-// const links = [
-//   { title: "Декорация", route: { name: "category", params: { categoryId: 3 } } },
-//   { title: "Войлочные", route: { name: "category", params: { categoryId: 6 } } },
-//   { title: "Aмигуруми", route: { name: "category", params: { categoryId: 5 } } },
-//   { title: "Композиция", route: { name: "category", params: { categoryId: 7 } } },
-// ];
-
 const footerLinks = [
   { name: "home", label: "Change account", icon: "change-account" },
   { name: "home", label: "Logout", icon: "logout" },
 ];
 
-function openCategory(id) {
+function gotoProductCategory(id) {
   router.push({ name: "category", params: { categoryId: id } });
   closeDrawer();
 }
@@ -34,8 +28,13 @@ function openCategory(id) {
 <template>
   <nav class="navbar">
     <div class="main">
-      <ul>
-        <li v-for="category in productCategories" :key="category.id" class="link" @click="openCategory(category.id)">
+      <ul class="menu">
+        <li
+          v-for="category in productCategories"
+          :key="category.id"
+          class="menu-item"
+          @click="gotoProductCategory(`${category.id}-${slug(category.title)}`)"
+        >
           <!-- <router-link v-slot="{ href, navigate }" :to="link.route" custom> -->
           <!-- <BaseIcon size="24" :name="link.icon" class="icon" fill1="currentColor" /> -->
           <!-- <a role="link" :href="href" @click="onLinkClick($event, navigate)">{{ link.title }}</a>
@@ -46,8 +45,8 @@ function openCategory(id) {
       </ul>
     </div>
     <div class="footer">
-      <ul>
-        <li v-for="link in footerLinks" :key="link.label">
+      <ul class="menu">
+        <li v-for="link in footerLinks" :key="link.label" class="menu-item">
           <router-link v-slot="{ href, navigate }" :to="{ name: link.name }" custom>
             <BaseIcon size="24" :name="link.icon" class="icon" />
             <a role="link" :href="href" @click="onLinkClick($event, navigate)">{{ link.label }}</a>
@@ -68,16 +67,17 @@ function openCategory(id) {
   }
 
   .main, .footer {
-    ul {
+    .menu {
       list-style-type: none;
       padding-left: 0;
 
-      li {
+      .menu-item {
         line-height: 3em;
         padding-left: 1em;
         display: flex;
         align-items: center;
         color: var(--vwa-c-text-2);
+        cursor: pointer;
         /* // border-bottom: solid 1px var(--vwa-c-divider); */
         &:hover {
           color: var(--vwa-c-text-1);

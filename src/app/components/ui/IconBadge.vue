@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  num: {
+  value: {
     type: Number,
     default: 0,
   },
@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <span v-if="num > 0" class="badge">{{ num }}</span>
+  <span v-if="value > 0" class="badge">{{ value }}</span>
 </template>
 
 <style scoped>

@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import IconBadge from "@/app/components/ui/IconBadge.vue";
 import { useFavourites } from "@/products/composables/useFavourites";
+import { slug } from "@/app/utils/slug";
 import AppSearchBar from "@/app/components/searchbar/AppSearchBar.vue";
 import BaseIcon from "@/app/components/ui/BaseIcon.vue";
+import BaseIconButton from "@/app/components/ui/BaseIconButton.vue";
 import HamburgerIcon from "@/app/components/ui/HamburgerIcon.vue";
 import { useAppConfig } from "@/app/composables/useAppConfig";
 import { useProductCatalog } from "@/products/composables/useProductCatalog";
@@ -14,20 +15,13 @@ const { listFavourites } = useFavourites();
 const { productCategories } = useProductCatalog();
 const router = useRouter();
 
-// const links = [
-//   { title: "Декорация", route: { name: "category", params: { categoryId: 3 } } },
-//   { title: "Войлочные", route: { name: "category", params: { categoryId: 6 } } },
-//   { title: "Aмигуруми", route: { name: "category", params: { categoryId: 5 } } },
-//   { title: "Композиция", route: { name: "category", params: { categoryId: 7 } } },
-// ];
-
 const topnavItems = [
-  // { title: "Избранное", icon: "favourites", route: { name: "favourites" } },
+  { title: "Избранное", icon: "favourites", route: { name: "favourites" } },
   { title: "Корзина", icon: "cart", route: { name: "cart" } },
   { title: "Войти", icon: "account", route: { name: "login" } },
 ];
 
-function openCategory(id) {
+function gotoProductCategory(id) {
   router.push({ name: "category", params: { categoryId: id } });
 }
 </script>
@@ -44,36 +38,21 @@ function openCategory(id) {
         </div>
       </RouterLink>
       <AppSearchBar class="search-bar" />
-      <!-- <div class="search-field">
-        <input type="text" placeholder="Search">
-      </div> -->
       <nav class="topnav">
-        <!-- <ThemeToggle /> -->
-        <!-- <button class="">
-          <BaseIcon size="20" name="orders" class="icon" fill1="white" />
-        </button> -->
-        <RouterLink class="link" :to="{ name: 'favourites' }">
-          <div class="item">
-            <div class="icon-wrapper">
-              <BaseIcon size="20" name="favourites" class="icon" />
-              <IconBadge :num="listFavourites().length" />
-            </div>
-            <span class="title">Избранное</span>
-          </div>
-        </RouterLink>
         <RouterLink v-for="item in topnavItems" :key="item.title" class="link" :to="item.route">
-          <div class="item-wrapper">
-            <div class="item">
-              <BaseIcon size="20" :name="item.icon" class="icon" fill1="white" />
-              <span class="title">{{ item.title }}</span>
-            </div>
-          </div>
+          <BaseIconButton
+            :title="item.title" :icon="item.icon"
+            :badge="item.icon === 'favourites' ? listFavourites().length : 0"
+          />
         </RouterLink>
         <HamburgerIcon v-model="isDrawerOpen" class="drawer-toggle" />
       </nav>
     </div>
     <div class="links">
-      <div v-for="category in productCategories" :key="category.id" class="link" @click="openCategory(category.id)">
+      <div
+        v-for="category in productCategories" :key="category.id" class="link"
+        @click="gotoProductCategory(`${category.id}-${slug(category.title)}`)"
+      >
         {{ category.title }}
       </div>
     </div>
@@ -132,39 +111,16 @@ function openCategory(id) {
       display: flex;
       align-items: center;
 
-        .item {
-          border: 0;
-          /* // color: var(--vwa-c-text-2); */
-          color: var(--vwa-c-border);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin: 0 1rem;
-          transition: all 0.3s ease-in-out;
-
-          .title {
-            font-weight: 300;
-            font-size: 0.8rem;
-          }
-
-          &:hover {
-            color: var(--vwa-c-text-2);
-          }
-
-          .mobile &,
-          .tablet & {
-            display: none;
-          }
-          .icon-wrapper {
-            position: relative;
-          }
-        }
+      .mobile &,
+      .tablet & {
+        display: none;
+      }
 
       .drawer-toggle {
         margin: 0 1em;
 
-        .notebook &,
-        .desktop & {
+        .mobile &,
+        .tablet & {
           display: none;
         }
       }

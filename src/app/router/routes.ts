@@ -14,17 +14,19 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/product/:productId",
     name: "product",
+    props: route => ({ productId: +(route.params.productId as string).split("-")[0] }),
     component: ProductView,
   },
   {
     path: "/category/:categoryId",
     name: "category",
-    props: true,
+    props: route => ({ categoryId: +(route.params.categoryId as string).split("-")[0] }),
     component: ProductCategoryView,
   },
   {
     path: "/favourites",
     name: "favourites",
+    props: { categoryId: 0 },
     component: ProductCategoryView,
   },
   {
