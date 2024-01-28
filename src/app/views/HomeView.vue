@@ -13,7 +13,7 @@ onMounted(async () => {
     <h1>Arty Crafty</h1>
     <p>Добро пожаловать в магазин игрушек ручной работы Arty Crafty</p>
 
-    <img src="/arty-crafty/api/toy3.jpg" alt="Лисички">
+    <img src="/api/toy3.jpg" alt="Лисички">
   </div>
 </template>
 
