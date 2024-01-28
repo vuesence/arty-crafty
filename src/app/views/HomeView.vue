@@ -10,12 +10,18 @@ onMounted(async () => {
 
 <template>
   <div>
-    <h2>Congratulations with scaffolding your vue webapp!</h2>
-    <h3>
-      Home page
-    </h3>
+    <h1>Arty Crafty</h1>
+    <p>Добро пожаловать в магазин игрушек ручной работы Arty Crafty</p>
+
+    <img src="/arty-crafty/api/toy3.jpg" alt="Лисички">
   </div>
 </template>
 
 <style scoped>
+h1, p {
+  text-align: center;
+}
+img {
+  margin: 4em auto;
+}
 </style>

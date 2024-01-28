@@ -63,7 +63,7 @@ function goto(name: string) {
   background-color: var(--vwa-c-bg);
   box-shadow: 0 0 28px rgba(52,0,0,0.15);
   z-index: 99999;
-  padding: 0 10px;
+  padding: 5px 10px 0;
   /* transition-delay: 0.3s; */
   .desktop &, .notebook & {
     display: none;

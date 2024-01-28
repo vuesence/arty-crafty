@@ -20,8 +20,8 @@ const products = {
     return data[0] ?? null;
   },
 
-  async loadCategories() {
-    return await http.get(`${SB}/categories?select=id,title,data`);
+  async categories() {
+    return http.get(`${SB}/categories?select=id,title,data`);
   },
 
 };

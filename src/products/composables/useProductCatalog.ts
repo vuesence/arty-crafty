@@ -4,7 +4,7 @@ import { api } from "@/app/services/api";
 const productCategories = ref([]);
 
 export async function loadCategories() {
-  productCategories.value = await api.products.loadCategories();
+  productCategories.value = await api.products.categories();
 }
 
 export function getCategory(categoryId) {
