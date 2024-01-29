@@ -4,6 +4,7 @@ import ProductCategoryView from "@/products/views/ProductCategoryView.vue";
 import ProductView from "@/products/views/ProductView.vue";
 import AboutView from "@/app/views/AboutView.vue";
 import ContactsView from "@/app/views/ContactsView.vue";
+import ShoppingCartView from "@/cart/views/ShoppingCartView.vue";
 
 const routes: RouteRecordRaw[] = [
   {
@@ -32,7 +33,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/cart",
     name: "cart",
-    component: ProductCategoryView,
+    component: ShoppingCartView,
   },
   {
     path: "/login",
@@ -47,6 +48,11 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/about",
     name: "about",
+    component: AboutView,
+  },
+  {
+    path: "/delivery",
+    name: "delivery",
     component: AboutView,
   },
 ];

@@ -29,6 +29,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "embla-carousel-vue": "8.0.0-rc21",
     "vue": "^3.4.13",
     "vue-router": "^4.2.5"
   },

@@ -2,11 +2,10 @@
 import BaseIcon from "@/app/components/ui/BaseIcon.vue";
 
 const links = [
-  { title: "Contact", route: { name: "contacts" } },
-  { title: "Privacy", route: { name: "about" } },
-  { title: "Blog", route: { name: "about" } },
-  { title: "Store", route: { name: "about" } },
-  { title: "Careers", route: { name: "about" } },
+  { title: "О нас", route: { name: "about" } },
+  { title: "Контакты", route: { name: "contacts" } },
+  { title: "Доставка", route: { name: "delivery" } },
+  { title: "Продавцам", route: { name: "about" } },
 ];
 
 const socials = [

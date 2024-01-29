@@ -1,2 +1,9 @@
 
-/* // layout-placeholder */
+h1, p {
+    text-align: center;
+}
+
+.text-block {
+    max-width: 50em;
+    margin: auto;
+}

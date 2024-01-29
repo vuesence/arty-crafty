@@ -22,11 +22,11 @@ async function submitForm() {
 </script>
 
 <template>
-  <div>
-    <h2>Share your feedback</h2>
-    <p>
+  <div class="text-block">
+    <h1>Напишите нам</h1>
+    <!-- <p>
       Thanks for sending us your ideas!
-    </p>
+    </p> -->
     <p>
       <i>
         This form does not work. Please use
@@ -49,7 +49,7 @@ async function submitForm() {
       <label for="check">Enter word "vue"</label>
       <input id="check" v-model="form.check" type="text" name="check" placeholder="">
 
-      <input ref="submit" type="submit" value="Submit" @click="submitForm">
+      <input ref="submit" type="submit" value="Отправить" @click="submitForm">
     </div>
     <!-- <img class="picture" src="/images/3.jpg" /> -->
   </div>
@@ -67,7 +67,7 @@ async function submitForm() {
   select,
   textarea {
     width: 100%;
-    padding: 12px;
+    padding: 3px 6px;
     /* // border: 1px solid var(--vwa-c-border); */
     outline-color: var(--vwa-c-border-alt);
     border-radius: 4px;
@@ -83,7 +83,7 @@ async function submitForm() {
   }
 
   textarea {
-    height: 200px;
+    height: 160px;
   }
 
   /* Style the submit button with a specific background color etc */

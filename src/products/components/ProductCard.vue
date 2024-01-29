@@ -1,22 +1,23 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import ProductCardImage from "./ProductCardImage.vue";
+import BaseIcon from "@/app/components/ui/BaseIcon.vue";
 import { slug } from "@/app/utils/slug";
+import { useShoppingCart } from "@/cart/composables/useShoppingCart";
 
-const props = defineProps({
-  product: {
-    type: Object,
-    default: () => { },
-  },
-});
+const props = defineProps<{
+  product: Product
+}>();
 
 const router = useRouter();
+const cart = useShoppingCart();
 
 function gotoProduct() {
   router.push({ name: "product", params: { productId: `${props.product.id}-${slug(props.product.title)}` } });
 }
 function addToCart() {
   console.log("addToCart", props.product);
+  cart.add(props.product);
 }
 </script>
 
@@ -34,9 +35,9 @@ function addToCart() {
         <div class="price">
           {{ product.summary.price }} <span class="currency-symbol">₽</span>
         </div>
-        <!-- <button class="add-to-cart-button" type="button" title="Add to cart">
-          <BaseIcon size="20" name="add-to-cart" class="icon" fill1="white" />
-        </button> -->
+        <button class="add-to-cart-button" type="button" title="Add to cart">
+          <BaseIcon size="24" name="add-to-cart" class="icon" />
+        </button>
       </div>
     </div>
   </div>
@@ -75,7 +76,7 @@ function addToCart() {
       }
 
       .add-to-cart-button {
-        padding: 10px;
+        padding: 8px;
         cursor: pointer;
         border: 1px solid transparent;
         background-color: rgb(254, 114, 0);

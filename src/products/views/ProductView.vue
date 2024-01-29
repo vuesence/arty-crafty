@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import ProductCardImage from "../components/ProductCardImage.vue";
+import ProductGallery from "../components/ProductGallery.vue";
 import { api } from "@/app/services/api";
 import { useAppLoader } from "@/app/composables/useAppLoader";
 
@@ -11,12 +11,11 @@ const props = defineProps({
   },
 });
 
-const product = ref();
+const product = ref<Product>();
 
 const { startLoading, stopLoading } = useAppLoader();
 
 watch(() => props.productId, async () => {
-  // console.log(route.params.categoryId);
   startLoading();
   product.value = await api.products.product(props.productId);
   stopLoading();
@@ -25,8 +24,8 @@ watch(() => props.productId, async () => {
 
 <template>
   <div v-if="product">
-    <h2>{{ product.title }}</h2>
-    <ProductCardImage :product="product" />
+    <h1>{{ product.title }}</h1>
+    <ProductGallery :product="product" />
 
     <div class="desc">
       {{ product.summary.shortDesc }}

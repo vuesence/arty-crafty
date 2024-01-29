@@ -8,12 +8,14 @@ import BaseIconButton from "@/app/components/ui/BaseIconButton.vue";
 import HamburgerIcon from "@/app/components/ui/HamburgerIcon.vue";
 import { useAppConfig } from "@/app/composables/useAppConfig";
 import { useProductCatalog } from "@/products/composables/useProductCatalog";
+import { useShoppingCart } from "@/cart/composables/useShoppingCart";
 
 // import ThemeToggle from "@/app/components/ui/ThemeToggle.vue";
 const { isDrawerOpen } = useAppConfig();
 const { listFavourites } = useFavourites();
 const { productCategories } = useProductCatalog();
 const router = useRouter();
+const cart = useShoppingCart();
 
 const topnavItems = [
   { title: "Избранное", icon: "favourites", route: { name: "favourites" } },
@@ -42,7 +44,7 @@ function gotoProductCategory(id) {
         <RouterLink v-for="item in topnavItems" :key="item.title" class="link" :to="item.route">
           <BaseIconButton
             :title="item.title" :icon="item.icon"
-            :badge="item.icon === 'favourites' ? listFavourites().length : 0"
+            :badge="item.icon === 'favourites' ? listFavourites().length : item.icon === 'cart' ? cart.size : 0"
           />
         </RouterLink>
         <HamburgerIcon v-model="isDrawerOpen" class="drawer-toggle" />
