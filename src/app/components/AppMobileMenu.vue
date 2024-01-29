@@ -1,27 +1,14 @@
 <script setup lang="ts">
-// import { useRouter } from "vue-router";
-// import IconBadge from "@/app/components/ui/IconBadge.vue";
 import { router } from "../router";
 import { useFavourites } from "@/products/composables/useFavourites";
-
-// import { slug } from "@/app/utils/slug";
-// import AppSearchBar from "@/app/components/searchbar/AppSearchBar.vue";
 import BaseIcon from "@/app/components/ui/BaseIcon.vue";
 import BaseIconButton from "@/app/components/ui/BaseIconButton.vue";
-
-// import HamburgerIcon from "@/app/components/ui/HamburgerIcon.vue";
 import { useAppConfig } from "@/app/composables/useAppConfig";
 
-// import { useProductCatalog } from "@/products/composables/useProductCatalog";
-
-// // import ThemeToggle from "@/app/components/ui/ThemeToggle.vue";
 const { isDrawerOpen } = useAppConfig();
 const { listFavourites } = useFavourites();
-// const { productCategories } = useProductCatalog();
-// const router = useRouter();
 
 const navItems = [
-  // { title: "Избранное", icon: "favourites", route: { name: "favourites" } },
   { title: "Главная", icon: "home", handler: () => goto("home") },
   { title: "Каталог", icon: "catalog", handler: () => { isDrawerOpen.value = !isDrawerOpen.value; } },
   { title: "Корзина", icon: "cart", handler: () => goto("cart") },
@@ -68,6 +55,5 @@ function goto(name: string) {
   .desktop &, .notebook & {
     display: none;
   }
-  /* .menu-item {} */
 }
 </style>
