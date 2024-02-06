@@ -1,8 +1,11 @@
 import { ref, watch } from "vue";
+import { useLocalStorage } from "@/app/composables/useLocalStorage";
 
 const isDrawerOpen = ref(false);
 const isDarkTheme = ref(false);
 const APPEARANCE_KEY = "vwa-theme-appearance";
+
+useLocalStorage().observe("isDarkTheme", isDarkTheme);
 
 watch(isDarkTheme, () => {
   if (isDarkTheme.value) {

@@ -10,7 +10,8 @@ import { useAppConfig } from "@/app/composables/useAppConfig";
 import { useProductCatalog } from "@/products/composables/useProductCatalog";
 import { useShoppingCart } from "@/cart/composables/useShoppingCart";
 
-// import ThemeToggle from "@/app/components/ui/ThemeToggle.vue";
+import ThemeToggle from "@/app/components/ui/ThemeToggle.vue";
+
 const { isDrawerOpen } = useAppConfig();
 const { listFavourites } = useFavourites();
 const { productCategories } = useProductCatalog();
@@ -48,6 +49,7 @@ function gotoProductCategory(id) {
           />
         </RouterLink>
         <HamburgerIcon v-model="isDrawerOpen" class="drawer-toggle" />
+        <ThemeToggle />
       </nav>
     </div>
     <div class="links">

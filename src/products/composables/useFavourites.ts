@@ -1,7 +1,10 @@
 import { ref } from "vue";
+import { useLocalStorage } from "@/app/composables/useLocalStorage";
 
 const favArray = JSON.parse(localStorage.getItem("ac-favourites")) as number[] ?? [];
 const favourites = ref<Set<number>>(new Set(favArray));
+
+useLocalStorage().observe("favourites", favourites);
 
 export function useFavourites() {
   /**

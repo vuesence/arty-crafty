@@ -11,6 +11,7 @@ import { loadIcons } from "@/app/utils/icons";
 import { initAppearance } from "@/app/composables/useAppConfig";
 import { loadCategories } from "@/products/composables/useProductCatalog";
 import { api } from "@/app/services/api";
+import { useLocalStorage } from "@/app/composables/useLocalStorage";
 
 import { useI18n } from "@/app/composables/useI18nLight";
 
@@ -23,6 +24,7 @@ initAppearance();
 api.init();
 loadCategories();
 // initI18n();
+useLocalStorage().init();
 
 await Promise.all([
   router.isReady(),
