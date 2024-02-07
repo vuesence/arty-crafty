@@ -1,30 +1,25 @@
 import { ref, watch } from "vue";
-import { useLocalStorage } from "@/app/composables/useLocalStorage";
 
 const isDrawerOpen = ref(false);
 const isDarkTheme = ref(false);
-const APPEARANCE_KEY = "vwa-theme-appearance";
-
-useLocalStorage().observe("isDarkTheme", isDarkTheme);
 
 watch(isDarkTheme, () => {
   if (isDarkTheme.value) {
     document.documentElement.classList.add("dark");
-    // localStorage.setItem(APPEARANCE_KEY, "dark");
   } else {
     document.documentElement.classList.remove("dark");
-    // localStorage.setItem(APPEARANCE_KEY, "");
   }
 });
 
-export function initAppearance() {
-  // document.documentElement.classList.add("dark");
-  const preference = localStorage.getItem(APPEARANCE_KEY) || "";
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  if (!preference || preference === "auto" ? prefersDark : preference === "dark") {
-    document.documentElement.classList.add("dark");
-  };
-}
+// export function initAppearance() {
+// document.documentElement.classList.add("dark");
+// const preference = localStorage.getItem(APPEARANCE_KEY) || "";
+// const preference = "";
+// const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+// if (!preference || preference === "auto" ? prefersDark : preference === "dark") {
+//   document.documentElement.classList.add("dark");
+// };
+// }
 
 export function useAppConfig() {
   function closeDrawer() {
@@ -35,6 +30,6 @@ export function useAppConfig() {
     isDrawerOpen,
     isDarkTheme,
     closeDrawer,
-    initAppearance,
+    // initAppearance,
   };
 }

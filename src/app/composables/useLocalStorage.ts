@@ -1,5 +1,7 @@
 import { reactive, watch } from "vue";
 
+const LS_KEY = "arty-crafty-data";
+
 // observed reactive data
 const data: Record<string, any> = reactive({});
 
@@ -8,26 +10,35 @@ const data: Record<string, any> = reactive({});
  * When the "arty-crafty-data" key is detected in the event, it parses the new value and updates the data object.
  */
 function init() {
+  readFromStorage();
   window.addEventListener("storage", (e) => {
-    if (e.key === "arty-crafty-data") {
-      for (const [key, value] of Object.entries(JSON.parse(e.newValue))) {
-        data[key] = (data[key] instanceof Set) ? new Set(value as []) : value;
-      }
+    if (e.key === LS_KEY) {
+      readFromStorage();
     }
   });
 }
 
+function readFromStorage() {
+  const lsData = JSON.parse(localStorage.getItem(LS_KEY) || "{}");
+  for (const [key, value] of Object.entries(lsData)) {
+    data[key] = (data[key] instanceof Set) ? new Set(value as []) : value;
+  }
+}
+
+// store data to localStoradge
 watch(data, () => {
   const decomposedData = {};
   for (const key in data) {
     decomposedData[key] = (data[key] instanceof Set) ? Array.from(data[key]) : data[key];
   }
-  localStorage.setItem("arty-crafty-data", JSON.stringify(decomposedData));
+  localStorage.setItem(LS_KEY, JSON.stringify(decomposedData));
 });
 
 export function useLocalStorage() {
-  function observe(key: string, value: any) {
-    data[key] = value;
+  function observe(key: string, observable: any) {
+    // setting initial value to reactive observable from localStorage
+    observable.value = (observable.value instanceof Set) ? new Set(data[key]) : data[key];
+    data[key] = observable;
   }
 
   return { init, observe };

@@ -45,7 +45,7 @@ function gotoProductCategory(id) {
         <RouterLink v-for="item in topnavItems" :key="item.title" class="link" :to="item.route">
           <BaseIconButton
             :title="item.title" :icon="item.icon"
-            :badge="item.icon === 'favourites' ? listFavourites().length : item.icon === 'cart' ? cart.size : 0"
+            :badge="item.icon === 'favourites' ? listFavourites().length : (item.icon === 'cart' ? cart.size() : 0)"
           />
         </RouterLink>
         <HamburgerIcon v-model="isDrawerOpen" class="drawer-toggle" />

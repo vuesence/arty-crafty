@@ -4,8 +4,6 @@ import { useLocalStorage } from "@/app/composables/useLocalStorage";
 const favArray = JSON.parse(localStorage.getItem("ac-favourites")) as number[] ?? [];
 const favourites = ref<Set<number>>(new Set(favArray));
 
-useLocalStorage().observe("favourites", favourites);
-
 export function useFavourites() {
   /**
    * Determines if a product is in the favourites list.
@@ -41,5 +39,5 @@ export function useFavourites() {
     return Array.from(favourites.value);
   }
 
-  return { isInFavourites, toggleFavourite, listFavourites };
+  return { isInFavourites, toggleFavourite, listFavourites, favourites };
 }
