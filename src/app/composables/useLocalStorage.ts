@@ -22,7 +22,7 @@ watch(data, () => {
   for (const key in data) {
     decomposedData[key] = (data[key] instanceof Set) ? Array.from(data[key]) : data[key];
   }
-  localStorage.setItem("ap-data", JSON.stringify(decomposedData));
+  localStorage.setItem("arty-crafty-data", JSON.stringify(decomposedData));
 });
 
 export function useLocalStorage() {
