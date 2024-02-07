@@ -10,10 +10,10 @@ useLocalStorage().observe("isDarkTheme", isDarkTheme);
 watch(isDarkTheme, () => {
   if (isDarkTheme.value) {
     document.documentElement.classList.add("dark");
-    localStorage.setItem(APPEARANCE_KEY, "dark");
+    // localStorage.setItem(APPEARANCE_KEY, "dark");
   } else {
     document.documentElement.classList.remove("dark");
-    localStorage.setItem(APPEARANCE_KEY, "");
+    // localStorage.setItem(APPEARANCE_KEY, "");
   }
 });
 
