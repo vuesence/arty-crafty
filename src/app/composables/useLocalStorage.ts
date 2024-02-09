@@ -1,5 +1,21 @@
 import { reactive, watch } from "vue";
 
+/**
+ * Custom `useLocalStorage` implementation
+ * It can observe any reactive variable with a two-way mapping of its value to window.localStorage
+ *
+ * Usage:
+ *
+ * import { useLocalStorage } from "@/app/composables/useLocalStorage";
+ * const ls = useLocalStorage();
+ *
+ * ls.init();
+ * ls.observe("isDarkTheme", isDarkTheme);
+ * ls.observe("favourites", favourites);
+ * ls.observe("shoppingCart", shoppingCart);
+ *
+ */
+
 const LS_KEY = "arty-crafty-data";
 
 // observed reactive data
