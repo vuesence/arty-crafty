@@ -25,11 +25,13 @@ function addToCart() {
   <div class="product-card">
     <ProductCardImage :product="product" @click="gotoProduct()" />
     <div class="description">
-      <h2 class="title">
-        {{ product.title }}
-      </h2>
-      <div class="desc">
-        {{ product.summary.shortDesc }}
+      <div class="summary">
+        <h2 class="title">
+          {{ product.title }}
+        </h2>
+        <div class="desc">
+          {{ product.summary.shortDesc }}
+        </div>
       </div>
       <div class="price-wrapper" @click="addToCart()">
         <div class="price">
