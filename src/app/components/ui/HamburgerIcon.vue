@@ -3,7 +3,7 @@ const modelValue = defineModel();
 </script>
 
 <template>
-  <button :class="{ opened: modelValue }" @click="modelValue = !modelValue">
+  <button :class="{ opened: modelValue }" aria-label="Menu" @click="modelValue = !modelValue">
     <div class="burger" />
   </button>
 </template>
