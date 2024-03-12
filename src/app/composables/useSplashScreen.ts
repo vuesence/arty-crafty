@@ -8,6 +8,6 @@ export function useSplashScreen() {
         document.querySelector("body").classList.remove("splash");
         document.body.style.position = "initial";
       }, 500);
-    }, 1000);
+    }, 500);
   });
 }
