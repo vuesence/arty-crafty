@@ -11,6 +11,11 @@ export default defineConfig({
   base: "/arty-crafty/",
   build: {
     target: "esnext",
+    rollupOptions: {
+      external: [
+        "/arty-crafty/assets/images/logo.webp",
+      ],
+    },
   },
   plugins: [
     vue(),
