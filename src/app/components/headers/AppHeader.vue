@@ -34,7 +34,8 @@ function gotoProductCategory(id) {
     <div class="main-header">
       <RouterLink :to="{ name: 'home' }">
         <div class="logo">
-          <BaseIcon size="30" name="logo" class="icon" />
+          <!-- <BaseIcon size="30" name="logo" class="icon" /> -->
+          <img class="icon" alt="logo" src="/arty-crafty/assets/images/logo.webp" />
           <div class="title">
             Arty-Crafty
           </div>
@@ -92,6 +93,9 @@ function gotoProductCategory(id) {
       .notebook &,
       .desktop & {
         width: 15rem;
+      }
+      img {
+        width: 20px;
       }
 
       .title {

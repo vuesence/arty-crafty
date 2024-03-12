@@ -45,7 +45,7 @@ const socials = [
       </g>
     </svg> -->
     <div class="logo">
-      <BaseIcon size="30" name="logo" class="icon" />
+      <img class="icon" alt="logo" src="/arty-crafty/assets/images/logo.webp" />
       <div class="title">
         Arty-Crafty
       </div>
@@ -89,6 +89,10 @@ const socials = [
     max-width: 200px;
     display: flex;
     align-items: center;
+
+    img {
+      width: 20px;
+    }
 
     .title {
       margin-left: 0.6rem;
