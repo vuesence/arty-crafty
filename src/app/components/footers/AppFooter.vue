@@ -45,7 +45,7 @@ const socials = [
       </g>
     </svg> -->
     <div class="logo">
-      <img class="icon" alt="logo" src="/arty-crafty/assets/images/logo.webp" />
+      <img class="icon" alt="logo" src="/assets/images/logo.webp" />
       <div class="title">
         Arty-Crafty
       </div>
