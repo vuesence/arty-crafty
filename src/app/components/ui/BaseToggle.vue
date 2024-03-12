@@ -1,5 +1,5 @@
 <template>
-  <button class="toggle" type="button" role="switch" aria-checked="false">
+  <button class="toggle" type="button" aria-checked="false">
     <span class="check">
       <span v-if="$slots.default" class="icon">
         <slot />

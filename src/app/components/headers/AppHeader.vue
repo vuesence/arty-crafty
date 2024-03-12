@@ -35,7 +35,7 @@ function gotoProductCategory(id) {
       <RouterLink :to="{ name: 'home' }">
         <div class="logo">
           <!-- <BaseIcon size="30" name="logo" class="icon" /> -->
-          <img class="icon" alt="logo" src="/assets/images/logo.webp" />
+          <img alt="logo" src="/assets/images/logo.webp" />
           <div class="title">
             Arty-Crafty
           </div>
