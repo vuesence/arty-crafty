@@ -57,6 +57,7 @@ const height = computed(() => {
   />
   <img
     v-else
+    :alt="props.name"
     :src="getImageUrl(props.name)"
     :data-name="props.name"
     :style="{

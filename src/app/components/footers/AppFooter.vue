@@ -56,10 +56,11 @@ const socials = [
       </RouterLink>
     </div>
     <div class="socials">
-      <a v-for="social in socials" :key="social.name" :href="social.url" target="_blank">
-        <button>
-          <BaseIcon size="18" :name="social.name" fill="none" />
-        </button>
+      <!-- eslint-disable-next-line vuejs-accessibility/anchor-has-content -->
+      <a v-for="social in socials" :key="social.name" :href="social.url" target="_blank" class="button">
+        <!-- <div class="button"> -->
+        <BaseIcon size="18" :name="social.name" fill="none" />
+        <!-- </div> -->
       </a>
     </div>
   </footer>
@@ -122,7 +123,7 @@ const socials = [
     justify-content: flex-end;
     align-items: center;
 
-    button {
+    .button {
       appearance: none;
       background: var(--vwa-c-bg) none repeat scroll 0% 0% / auto padding-box border-box;
       border: 1px solid var(--vwa-c-border);

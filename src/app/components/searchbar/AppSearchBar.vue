@@ -7,7 +7,9 @@ import BaseIcon from "@/app/components/ui/BaseIcon.vue";
 <template>
   <div class="search-bar">
     <div class="search-field">
-      <input class="" name="search" type="text" value="" placeholder="Search.." autocomplete="off">
+      <label for="search">
+        <input id="search" class="" name="search" type="text" value="" placeholder="Search.." autocomplete="off">
+      </label>
     </div>
     <div class="search-button">
       <button class="">

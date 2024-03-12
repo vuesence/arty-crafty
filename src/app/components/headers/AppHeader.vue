@@ -53,12 +53,12 @@ function gotoProductCategory(id) {
       </nav>
     </div>
     <div class="links">
-      <div
+      <button
         v-for="category in productCategories" :key="category.id" class="link"
         @click="gotoProductCategory(`${category.id}-${slug(category.title)}`)"
       >
         {{ category.title }}
-      </div>
+      </button>
     </div>
   </header>
 </template>
@@ -150,6 +150,7 @@ function gotoProductCategory(id) {
       line-height: 1;
       padding: 8px 12px;
       border-radius: 4px;
+      border: none;
       text-decoration: none;
       color: var(--vwa-c-text-2);
       transition: all 0.3s ease-in-out;

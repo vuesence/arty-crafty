@@ -33,7 +33,13 @@ function addToCart() {
           {{ product.summary.shortDesc }}
         </div>
       </div>
-      <div class="price-wrapper" @click="addToCart()">
+      <div
+        class="price-wrapper"
+        role="button"
+        tabindex="0"
+        @click="addToCart()"
+        @keydown="addToCart()"
+      >
         <div class="price">
           {{ product.summary.price }} <span class="currency-symbol">₽</span>
         </div>

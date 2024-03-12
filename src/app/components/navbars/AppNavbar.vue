@@ -39,16 +39,22 @@ function gotoProductCategory(id) {
         <li
           v-for="category in productCategories"
           :key="category.id"
-          class="menu-item"
-          @click="gotoProductCategory(`${category.id}-${slug(category.title)}`)"
         >
-          <!-- <router-link v-slot="{ href, navigate }" :to="link.route" custom> -->
-          <!-- <BaseIcon size="24" :name="link.icon" class="icon" fill1="currentColor" /> -->
-          <!-- <a role="link" :href="href" @click="onLinkClick($event, navigate)">{{ link.title }}</a>
+          <a
+            class="menu-item"
+            role="button"
+            tabindex="0"
+            @click="gotoProductCategory(`${category.id}-${slug(category.title)}`)"
+            @keypress="gotoProductCategory(`${category.id}-${slug(category.title)}`)"
+          >
+            <!-- <router-link v-slot="{ href, navigate }" :to="link.route" custom> -->
+            <!-- <BaseIcon size="24" :name="link.icon" class="icon" fill1="currentColor" /> -->
+            <!-- <a role="link" :href="href" @click="onLinkClick($event, navigate)">{{ link.title }}</a>
              -->
-          <BaseIcon size="34" :name="`toy-${category.id}`" class="icon" />
-          {{ category.title }}
+            <BaseIcon size="34" :name="`toy-${category.id}`" class="icon" />
+            {{ category.title }}
           <!-- </router-link> -->
+          </a>
         </li>
       </ul>
     </div>
