@@ -12,7 +12,7 @@ import BaseIcon from "@/app/components/ui/BaseIcon.vue";
       </label>
     </div>
     <div class="search-button">
-      <button class="">
+      <button class="" aria-label="Search">
         <BaseIcon size="20" name="search" class="icon" fill="white" />
       </button>
     </div>

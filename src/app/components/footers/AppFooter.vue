@@ -56,8 +56,14 @@ const socials = [
       </RouterLink>
     </div>
     <div class="socials">
-      <!-- eslint-disable-next-line vuejs-accessibility/anchor-has-content -->
-      <a v-for="social in socials" :key="social.name" :href="social.url" target="_blank" class="button">
+      <a
+        v-for="social in socials"
+        :key="social.name"
+        :href="social.url"
+        target="_blank"
+        class="button"
+        aria-label="social.name"
+      >
         <!-- <div class="button"> -->
         <BaseIcon size="18" :name="social.name" fill="none" />
         <!-- </div> -->
