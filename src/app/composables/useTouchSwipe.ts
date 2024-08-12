@@ -73,7 +73,8 @@ export function useTouchSwipe(
   const diffY = computed(() => round(coordsStart.y - coordsEnd.y));
 
   const isThresholdExceeded = computed(() =>
-    isThresholdExceeded.value || max(abs(diffX.value), abs(diffY.value)) >= threshold);
+    max(abs(diffX.value), abs(diffY.value)) >= threshold);
+    // isThresholdExceeded.value || max(abs(diffX.value), abs(diffY.value)) >= threshold);
 
   const direction = computed((): ISwipeDirection => {
     if (!isThresholdExceeded.value) {
