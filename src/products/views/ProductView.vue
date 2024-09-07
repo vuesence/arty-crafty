@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, useId, watch } from "vue";
 import ProductGallery from "../components/ProductGallery.vue";
 import { api } from "@/app/services/api";
 import { useAppLoader } from "@/app/composables/useAppLoader";
@@ -13,7 +13,7 @@ const props = defineProps({
 
 const product = ref<Product>();
 
-const { startLoading, stopLoading } = useAppLoader();
+const { startLoading, stopLoading } = useAppLoader(useId());
 
 watch(() => props.productId, async () => {
   startLoading();
