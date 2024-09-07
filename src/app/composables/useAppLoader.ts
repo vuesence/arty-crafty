@@ -1,17 +1,16 @@
 import { computed, reactive, ref } from "vue";
-import { uuid } from "@/app/utils/uuid";
 
 const loaderSet = reactive(new Set<string>());
 const loading = computed(() => loaderSet.size > 0);
 
-export function useAppLoader() {
-  const _uuid: string = uuid();
+export function useAppLoader(id) {
+  // const _uuid: string = uuid();
 
   function startLoading() {
-    loaderSet.add(_uuid);
+    loaderSet.add(id);
   }
   function stopLoading() {
-    loaderSet.delete(_uuid);
+    loaderSet.delete(id);
   }
 
   return { loading, startLoading, stopLoading };

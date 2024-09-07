@@ -7,6 +7,7 @@ export const htmlInjectionConfig: IHtmlInjectionConfig = {
       path: "./src/app/utils/injections/open-graph.html",
       type: "raw",
       injectTo: "head",
+      buildModes: "both",
     },
     {
       name: "Splash screen",

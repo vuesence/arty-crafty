@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref, useId, watch } from "vue";
 import ProductCard from "../components/ProductCard.vue";
 import { api } from "@/app/services/api";
 import { useProductCatalog } from "@/products/composables/useProductCatalog";
@@ -13,7 +13,7 @@ const props = defineProps({
   },
 });
 
-const { startLoading, stopLoading } = useAppLoader();
+const { startLoading, stopLoading } = useAppLoader(useId());
 
 const products = ref();
 const scrollComponent = ref(null);
